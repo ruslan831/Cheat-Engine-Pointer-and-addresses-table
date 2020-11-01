@@ -1,0 +1,159 @@
+Primary base address: 006A9EC0
+
+Sunlight: +768 +5560
+
+Gold coins: + 82c +28
+
+Adventure: + 82c +24
+
+Other modes: + 7f8 // end 16 and 70
+
+Flower Fertilizer + 82c + 1f8
+
+Insecticide + 82c + 1fc
+
+Chocolate + 82c +228
+
+Wood manure + 82c +230
+
+Wisdom tree + 82c + 31 * 4 + 30 = f4
+
+Total number of flower pots in the garden for relaxation: + 82c +350
+
+Pot type: + 82c + 350 + 8 + i * 58 i = 0, total -1
+
+Pot type: +8
+
+Flowerpot location: + c 0 - greenhouse 1 - mushroom garden 2 - on a cart 3 - in the aquarium
+
+Horizontal position of the pot: +10 columns
+
+Pot vertical position: +14 rows
+
+Pot direction: +18 0 right, 1 left
+
+Flowerpot thirsty: +24 and +44 and + 4c and 54 not equal to 0 when thirsty
+
+Flowerpot color: +28 0 - main color 1 gray 2 white 3 dark pink 4 burnt yellow 5 light pink 6 sky blue 7 red 8 blue 9 purple 10 off-white 11 yellow 12 green 16 death gray
+
+Flower pot growth cycle: + 2c 0 for seedlings, 1 for small flowers, 2 for medium flowers and 3 for large flowers.
+
+i * 58 next pot
+
+Number of card slots: +768 +144 +24
+
++28 Value currently used for recovery == + 2c can be used
+
++ 2c What recovery value can be used
+
++38 types of items
+
++50 next slot
+
+Mouse status: +768 +138 +30
+
+Current number of factories: +768 + bc
+
+Factory +768 + ac
+
++8 X coordinate of the image
+
++ c The Y coordinate of the image
+
++18 Can you see it? 1 means visible
+
++ 1c and +88 lines
+
++20 disappears if it's not 302685 or a specific value
+
++24 plant species
+
++28 number of columns
+
++40 current health
+
++44 to maximum health
+
++58 How long does it take to generate sunlight (countdown)
+
++ b8 brighter (produce sunlight?) (countdown)
+
++ bc flashes (countdown)
+
++130 Small mushrooms growing (countdown)
+
++130 visible 0 visible
+
++ 14c next plant
+
+Maximum number of monsters +768 +94
+
+The current number of monsters is +768 + a0
+
+Monster: +768 +90
+
++8 x coordinate (image position) 4 bytes
+
++ cy coordinate (image position) 4 bytes
+
++18 visible or not 0 means invisible
+
++ 1c Number of lines 0 ~ 5
+
++28 death and status 0 normal, 1 disappeared, 2 black, 3 thorn
+
++ 2c x coordinate (real position) float number
+
++30 y coordinate (real position) floating point number
+
++64 Lane change: 1 down and 2 up
+
++ AC freeze time (slow) (countdown)
+
++ b0 Oily face (not moving) (countdown)
+
++ b4 Freeze time (not moving) (countdown)
+
++ b8 Charm when zombies are not equal to 65536
+
++ c8 current blood value
+
++ blood limit
+
++ ec mysterious disappearance 1 means disappearance (irreversible)
+
++118 appears when stealth has a specific 16-bit value (shadow)
+
++ 11c Monster size is initially equal to 1 float
+
++ 15c next monster
+
+Number of items on earth: +768 + f4
+
+Point +768 + e4
+
++10 and +14 item area? Usually 60
+
++18 visible, 0 not visible, 1 visible
+
++20 visible 600001 visible (normal value)
+
++38 and + 3c mean mysterious disappearance 0 means no disappearance
+
++48 Y coordinate
+
++ 4c and +54 disappear when increased to a certain value
+
+Collected automatically when +50 is 1
+
++58 types of items
+
+Didn't look after +88
+
++ d8 forward
+
+Qty of china: +768 + 12c
+
+Perspective: +768 + 11c + 4c
+
++ ec next (up to 35)
