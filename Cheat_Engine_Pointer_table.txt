@@ -157,3 +157,483 @@ Qty of china: +768 + 12c
 Perspective: +768 + 11c + 4c
 
 + ec next (up to 35)
+address├┬64 \ text pointer (+
+28next) │└─28 \\
+file path├─D4 \\ [floating point] volume (-1)
+├─DC \\ [floating point] Sound effect (-1)
+├┬320 \ mouse and
+window ─28 \ ever-increasing
+value│ ├─84 \ [boolean] true when the game window is focused
+│ ├─88 \ current game top level window
+│ ├─8C \ current mouse while holding window
+│ ├─90 \ the window in which the mouse is currently located
+│ ├┬94 \\ top level window in the game
+│ │├─28 \ there is time
+│ │├─ 30 \ abscissa
+│├─34 \ ordinate│
+│├─38 \ horizontal length│
+│├─38 \
+vertical height│ │├─54 \ [boolean] displayed
+true │├┬ 60 \\
+color│ ││├─0 \\ [extended array of colors] title color│
+││└─10 \\ [extended color array] content color│
+│├─A4 \\ [GB2312 encoding Chinese version / ASCII English version Code]
+Text
+header │├─B4 \\ text length
+header │├─B8 \\
+header text length limitation│ │├┬DC \ text pointer│ ││└─0 \\ [Chinese version GB2312 code / English version ASCII code] content text encoding│
+│├─EC \\ content text length
+│ │└─F0 \\ text length limit
+content│ ├─DC \ [boolean] mouse is correct on screen (pause and record still)
+│ ├─E0 \ mouse abscissa (pause and record)
+│ ├─ E4 \ mouse ordinate (pause and record)
+│ ├─E8 \ mouse hold (pause and record, 1 - left button, 2 - right button, 3 - left and right button, 4 - middle button, 5 - left middle button, 6 - right middle button, 7 - left middle button right button)
+│ ├─EC \ same as [E8]
+│ └─F0 \ mouse movement time value is overwritten with value [28]
+├┬768 \\ current game information and objects
+│├┬─28 \ level time
+─30 \ screen abscissa (increases to the left, 0 in normal games)
+││├─34 \ screen ordinate (increases downward, 0 in normal games))
+││├─38 \ active abscissa range
+─3C \ clickable
+ordinate range ─54 \ [boolean] true displays
+screen ─58 \\ [Boolean] When the mouse is pressed, it will be true (0 on pause and no more will be written)
+││├─59 \\ [Boolean] When the mouse is on the screen, it will be true (0 on pause and no more will be written)
+││├ ─8C \\ [pointer] = base
+address││└┬90 \\ sequence of zombie objects, + 15C
+next││ ├─0 \\ [pointer] = base
+address ├─4 \\ [pointer] = current Game information and
+objects ├─8 \\ abscissa
+images ├─C \\ ordinate
+images││ ├─18 \\ [boolean] is invisible when false
+││ ├─1C \ number
+lines││ ├─20 \ image layer││
+├─24 \
+zombie type││ ├─28 \ condition
+zombie││ ├─2C \ [floating point] horizontal coordinates
+├─30 \\ [floating point] ordinates
+├ ├─34 \\ [floating point] [2C] change amount (forward speed
+dancing king and slowing down the ice machine) ││ ├─38 \\ keeps increasing until the value is greater than [40] * [44] changes back to 0
+││ ├─3C \\ Screaming Zombie Brian Countdown Range [500,1500)
+││ ├─51 \\ [boolean] Valid for
+gnaw ││ ├─54 \\ flash countdown
+zombies││ ├─60 \\ zombie lifetime
+├─64 \\
+zombie movement status ├─68 \ attribute countdown
+├─6C \\ standing state, -2-3 / still up (for interface card selected from zombie) -4
+││ the snowman gives a diamond ├─70 \\ 0 when
+││ ├─74 \\ zombie disappeared countdown
+│ │ ├─84 \\ [Float] [30] the amount of change (
+abrupt process) ││ ├─8C \\ abscissa of definition of a shot
+││ ├─90 \\ ordinate of shot definition
+││ ├─94 \ definition of transverse width
+shot ││ ├─98 \ determination of longitudinal height
+shot ││ ├─9C \ attack to determine the abscissa
+││ ├─A0 \ attack to determine the ordinate
+││ ├─A4 \\ Horizontal width of attack detection
+││ ├─A8 \ determining the height of the attack in the vertical
+├─AC \ deceleration countdown││
+├─B0 \ fixed butter countdown
+├─B4 \ countdown
+stop││ ─B8 \ [boolean] True when
+bewitched ││ ├─B9 \\ [boolean] is true when
+blown off ├─BA \\ [boolean] true at death
+││ ├─BB \\ [boolean] If the arm is not broken, this is true
+││ ├─BC \\ [boolean] There is a hand object, and if the snowman moves to the left, it's true
+││ ├─BD \\ [boolean] true in water
+││ ├─BE \\ [1byte] Follow the shadow as you climb
+ladder ─BF \\ [Boolean] True if you eat garlic
+││ ├─C4 \\ 1 type accessories (0 no 1 checkpoint 2 iron bucket 3 football 4 miner's hat 7 sled car 8 nuts 9 high nuts)
+││ ├─C8 \ current
+case power ─CC \ top
+case border ├─D0 \ 1 type of jewelry current
+HP││ ├─D4 \\ 1 HP Jewelry Type
+limit││ ├─D8 \ 2 types
+jewelry ─DC \\ 2 types of jewelry current
+HP││ ├─E0 \\ 2 types of HP jewelry
+limit││ ├─EC \ \ [boolean] disappeared to true
+││ ├─114 \\ hard countdown zombie wang rank
+││ ├─118 \\ [2 bytes] zombie on moving object ID
+││ ├─11C \\ size
+│ │ ├─124 \\ Movement speed is dead
+Yes ││ ├─12C \ the tough king crashed the cars
+││ number of rows ├─130 \ hard zombie king put
+││ ├─134 \ hard king put down tricks countdown
+││ ├─138 \ hard king stomping countdown
+│ │ ├─13C \ countdown to the head of the dead king
+││ ├─140 \ changing the value may make the ice / fireball disappear
+││─148 \ number of rows of ice \ fireball
+fire ├─14C \ type of ball, For ice hockey, this is 0
+││ └─15A \\ [2 bytes] If zombie
+exist│├┬─94 \\ Maximum number
+zombies││├─98 \\ Maximum number
+zombies││├─9C \\ Next zombie number
+││├─A0 \ current number of zombies
+││├─A4 \ zombies on each additional +1 to 65536
+││└┬A8 \ text index
+││ └─0 \ zombies
+│├─┬AC \\ plant attributes (+ 14C under a)
+││ ├─0 \\ [pointer] = base address
+││ ├─4 \\ [pointer] = current game information and object
+││ ├─8 \\ abscissa plants
+│ │ ├─C \ vertical coordinate of installation
+├─18 \ [boolean] is true when it is
+visible ├─1C \ quantity
+lines ││ ├─20 \\
+image layer││ ├─24 \ \
+Plant type││ ├─28 \ quantity
+columns ├─3C \
+factory status││ ├─40 \ current HP
+││ ├─44 \\ blood restriction
+││ ├─48 \ 1, you can
+attack ││ ├─4C \\ clover disappears reverse
+countdown││ ├─50 \\ ash ice clover starts counting down
+├─54 \\ Attribute Countdown││
+├─58 \\ bullet launch \ production item countdown││
+││─5C \\ bullet start \ production item time interval││
+├─90 \\ bullet launch countdown
+││ ├─94 \ [2 Bytes] Part number of a plant in a moving
+object ├─98 \\ Number of another part of the plant in the moving
+object││ ├─A4 \\ related to the size of the glasses?
+││ ├─B0 \ \ Countdown
+flashing ├─B4 \ ever decreasing
+value ││─B8 \\ light countdown
+├─BC \ flash countdown
+─C0 \ [floating point] Image shifts coordinates to the right
+││ ├─C4 \ [floating point] image downward offset, coordinate
+─C8 ~ 12C \\ 0
+││ ├─130 \\ mushroom countdown ││
+├─134 \\ 1 is invisible and can be bitten, 2 is not
+││ ├─13C \\ -1 direction and right, left
+││ ├─140 \\ [1 byte] convert between 0 and 1
+││ ├─141 \\ [boolean] to true, then Plant
+disappeared││ ├─142 \\ [boolean] true, plant crushed
+││ ├─143 \\ [boolean] true, the plant is asleep
+││ ├─144 \\ [boolean] Factory can be lit for true
+││ ├─145 \\ [boolean] for true plant is highlighted
+││ └─14A \\ [2 bytes] whether the plant is present
+│├ ┬─B0 \\ Maximum number
+plants││├─B4 \\ Upper limit
+quantity
+plants││├─B8 \\ Number of next plants││├─BC \\ Current quantity
+plants││├─C0 \\ each more Plant from +1 to 65536
+││└┬C4 \ text
+pointer││ └─0 \
+plant │├─┬C8 \\ marker attributes (+94 next)
+││ ├─0 \ [pointer] = Basic
+address││ ├─4 \ [pointer] = current game information and
+objects││ ├─8 \\ image X coordinate = rounded [30]
+││ ├─C \\ image Y coordinate = rounded ([34] + [38])
+││ ├─18 \\ [boolean] display marker when
+true ├─1C \ number
+strings ├─20 \\
+image layer││ ├─24 \ marker location Vertical offset
+area ├─30 \ [floating point] X coordinate of shadow
+││ ├─34 \\ [floating point] Y coordinate of the image
+─38 \\ [floating point] [34], [4C]
+Option││ ├─3C \\ [Floating point] [30] Option
+├─40 \\ [Floating point] [34], [4C] Option
+├─44 \\ [Floating point] [38] Option
+├─48 \\ [Floating point] [44] Option
+││ ├─4C \\ [Float] Y coordinate shadow
+││ ├─50 \\ [boolean] disappeared, the bullet became true
+││ ├─58 \ motion
+││ ├─5C \\ Bullet type
+││ ├─60 \ lifetime││
+├─64 \ self-decreasing reverse
+count ├─68 \ rotation angle
+bullets ││─6C \
+bullet speed ││─70 \ [boolean] true Shadow is moving
+down ─74 \\ Conditions for hitting the target?
+││ └─92 \ [2 bytes] Is there a bullet
+─CC \\ Maximum number
+bullets ─D0 \\ Upper limit
+quantity
+bullets ─D4 \ next bullet number ─D8 \ current number
+bullets ─DC \ from +1 to 65536 for each additional bullet
+││└┬E0 \ text pointer
+││ └─0 \\ shell
+│├─┬E4 \\ item attributes (+ D8 next)
+││ ├─0 \\ [pointer] = base
+address││ ├─4 \\ [pointer] = current game information AND
+object││ ├─8 \\ change X coordinate
+images ├─C \\ change Y coordinate
+images││ ├─10 \\
+evaluation width││ ├─14 \\
+evaluation height││ ├─18 \ \ [Boolean] true means the item is invisible
+├─20 \\
+layer││ ├─24 \\ [floating point] X coordinate
+││ ├─28 \\ [floating point] coordinate
+Y││ ├─2C \\ [floating point] coordinate change
+X││ ├─30 \\ [floating point] coordinate change
+Y││ ├─34 \\
+Size [floating point] ├─38 \\ [boolean] true will make it disappear
+element ││ ├─3C \\ [boolean] true will make it disappear
+item├ ├─40 \\ after collection it will become [24]
+│ │ ├─44 \\ becomes [28] upon collection ││ ├─48 \\
+Y coordinate, by
+which element should be moved ││
+Item lifetime существования ├─50 \\ [boolean] true Collected
+├─54 \ disappearance time││
+├─58 \ item type││
+├─5C \
+item movement status ├─68 \
+plant map type││ ├─C8 \\ [boolean] to true is a halo
+││ ├─C9 \\ [boolean] [C8] halo
+││ └─D2 \\ [2 bytes] whether the article exists
+│├┬─E8 \\ up to cardinality
+││ ├─EC \ quantity limitation
+items item─F0 \ number of the next item
+││├─F4 \ current item number
+─F8 \\ for each additional item, from +1 to 65536
+││└┬FC \\ Text
+pointer││ └─0 \\ coins
+│├─┬100 \\ cart attribute (+48 next)
+││ ├─0 \\ [pointer] = base address
+││ ├─4 \\ [pointer] = current game information and
+objects ││ ├─8 \\ [floating point X coordinate]
+├─C \\ [floating point] coordinate
+X││ ├─10 \\ image layer
+││ ├─14 \\ line number
+││ ├─2C \\ state
+││ ├─30 \\ [boolean] true disappears
+invisible when \\ [boolean] becomes false ││ ├─31
+││ ├─34 \ cart type
+├─38 \ [floating point]
+Y coordinate shift ├─3C \ shadow change
+└─46 \ [2 bytes] if the cart exists
+│├┬─104 \ Maximum number
+trolleys ─ 108 \ Maximum number
+trolleys ─10C \\ Next cart number
+─110 \\ Current number of carts
+││├─114 \\ from + 1 to 65536 for each additional cart
+││└┬118 \\ text
+pointer ││ └─0 \\ lawn mowers
+│├─┬11C \\ field element attributes (+ EC next)
+││ ├─0 \\ [pointer] = base
+address││ ├─4 \\ [pointer] = current game information and
+objects││ ├─8 \\
+type││ ├─C \\ jar type (3, 4,5)
+││ ├─10 \ quantity
+columns ├─14 \ number
+lines ├─18 \ countdown to headstone, countdown to disappearance of craters, brain health, countdown to disappearance of palladium nails
+││ ├─1C \\
+Layer││ ├─20 \\ [boolean] true will disappear
+├─24 \\ [X coordinate of the snail with
+floating point││ ├─28 \\ [floating point] snail / Y coordinate of the brain
+├─2C \\ [floating point] X coordinate
+snails ├─30 \\ [floating point] Y-coordinate
+snails├ ├─3C \ jar contains a serial number
+zombies││ ├─40 \ jar memory card with the number of plants
+││ ├─44 \\ jar content type (0,1,2,3)
+││ ├─48 \ [boolean] glitters compared to true
+││ ├─4C \\ Potted perspective counting, iz brain brightness
+─EA \\ [2 bytes], is there
+items at the venue│├┬─120 \\ maximum number
+items on site─128 \\ next item on site number
+││├─12C \ current number of spaces
+130 each additional element on the site +1 to 65536
+││ └─0 \ griditems
+│├─┬ 138 \\ attributes related to
+mouse││ ││─0 \\ [pointer] = base
+address││ ├─4 \\ [pointer] = current game information and
+objects ├─8 \\ coordinate
+X││ ├─C \ \ Coordinate
+Y││ ├─10 \\ 80
+││ ├─14 \\ 80
+││ ├─18 \\ [boolean] Mouse is correct in the game interface
+││ ├─24 \ where is the plant on
+the mouse is in the card slot ├─28 \ the card number on
+mouse ││ ├─2C \ card number
+simulator └─30 \ pocket item
+│├──13C \\ [[pointer]] = base address
+│├─┬140 \\ text attribute
+││ ├─0 \\ [pointer] = base address
+││ ├─4 ~ 84 \\ [Chinese GB2312 Code / English ASCII Code] Text Code
+content││ ├─88 \ disappearing countdown
+└─8C \
+text style│├─┬144 \\ slot attributes
+cards││ ├─0 \ [pointer] = Basic
+address││ ├─4 \ [pointer] = current game information and
+object││ ├─8 \ Coordinate
+X││ ││─C \ Coordinate
+Y││ ├─10 \ horizontal definition││
+││─18 \\ [boolean] to the false card slot is invisible
+││ ├─24 \\ cell number
+││ ├ +50 properties next slot card
+││ ├─4 \\ [pointer] = base address
+││ ├─ 8 \\ [pointer] = current game information and
+object││ ├─C \\ X coordinate of the card
+├─10 \\ Y coordinate
+cards││ ├─14 \\
+map evaluation width││ ├─18 \\
+Map evaluation height││ ├─1C \\ [boolean] false means the map is invisible
+││ ├─28 \\ cooling time
+cooled ││─2C \ total cooling time
+││ ├─30 \ serial
+card number ├─34 \ position of the card on the conveyor
+tape ├─38 \
+card slot contents││ ─3C \
+contents of simulator││ ├─40 \ slot machine Stop reverse
+countdown││ ├─44 \\ Content of the slot machine
+││ ├─48 \\ [Floating point] Rotation position of the gaming machine
+││─4C \\ [Boolean] false not available││
+││─4D \ \ [Boolean value] true will light up when
+select └─50 \\ Number of times the card slot
+used─┬148 \\ Button Properties
+menu││ ├─0 \\ [pointer] = base address││
+││ ─8 \\ coordinate
+X││ ├─C \\ coordinate
+Y││ ├─10 \\
+button width ├─14 \\ vertical
+text offset││ ├─18 \\ [boolean] mouse is on the button True
+││ ├─19 \\ [boolean] true for mouse button
+││ └─84 \\ [GB2312 Code for Chinese Version / ASCII Code for English Version] Text Code
+Content│├─┬14C \\ Button Properties
+LS││ ├─0 \ [pointer] = basic
+address││ ├─8 \ Coordinate
+X││ ├─C \ Coordinate
+Y││ ├─10 \\
+button width ├─14 \\ Vertical offset
+text ├─18 \\ [boolean] true when the mouse is over the button
+││ ├─19 \\ [boolean] true when the mouse is over the button
+││ └─84 \\ [Chinese Version GB2312 Code / English Version ASCII Code] Content Text Code 1──150
+\\ [boolean] true, the mouse will not display
+hand type │├─┬15C \ Card interface properties
+││ ├─0 \\ [pointer] = base
+address││ ├─8 \\ offset
+screen horizontally├ ├─2C \ true, then select the map to complete and start
+game ││ ││─34 \\ [boolean] false it is picked from the interface invisibility map
+││ └─35 \ [boolean] before the true selection of the interface card generating zombies
+│├─┬160 \\ Bejeweled Properties
+││ ├─0 \\ [pointer] = base address
+││ ├─4 \\ [pointer] = current game information and object
+├─8 \\ [boolean] ││ true, the plant is dragged over
+abscissa axis with gems when ││ ├─C \\ mouse clicks the plant
+│ │ ├─10 \\ plant - mouse click ordinate
+││ ├─14 ~ 49 \\ [boolean] has a crater
+││ ├─4A \\ [boolean] to true improved to double shooter
+││ ├─4B \\ [boolean] true will be promoted to large
+spatter mushroom││ ├─4C \\ [boolean] true will be boosted to high
+nut ├─50 \\ exclude sunlight received at one time
+││ ├─54 \\ more than 3 - inoperative, and the level name will not be displayed on
+8││ ├─58 \\ various inverse
+counts ├─5C \\ 0
+││ └─60 \\
+level process│├──164 \\ [logic Value] true if the game is paused
+│├──168 ~ 23C \
+stage mesh type ──4C8 ~ 5C0 \ fog concentration ──5D8 ~ 5EC \
+strange type
+per line│├ - 60C ~ 620 \ ice per line Coordinates of the road
+——624 ~ 638 \ countdown to the disappearance of each line of ice
+│├ —— 6B4 ~ 54D0 \\ strange list (contains 10 flags))
+—— 54D4 ~ 54F4 \ [1 Byte] Strange Seed│├
+——5538 \\ Countdown
+incident sunlight│├
+——553C \\ Incident Sunlight Meter│├ ——5540 \\ If it is not 0, the screen immediately returns to
+normal —— 5544 \\ Screen vibrates horizontally Amplitude
+——5548 \\ Vertical vibration amplitude screen
+——554C \\ Scene type
+——5550 \\ (Adventure Mode) Current level│├
+——5558 \\ X coordinate
+mouse│├ ——555C \\ Y coordinate
+mouse│├ ——5560 \\ Solar
+radiance│├ —— 5564 \\ Total wavenumber
+current level│├ —— 5568 \\ Game time (not including map selection time)
+│├ —— 556C \\ playing time (including time selection
+remaining cards) │├ - 5570 \ game time (to lose focus of re-timing)
+│├ - 5574 \\ produce trio countdown
+│├ - 557C \ currently in wave number
+│├ ——5580 \\ Updated Waveform
+number│├ ——5584 \\ Firmware tips pertaining to the beginner's guide
+│├ —— 5594 \\ HP that reaches upgrade conditions│├
+——5598 \\ General
+the amount of HP of this wave│├ —— 559C \\ The next wave of zombie countdown
+——55A0 \\ The next wave of zombie countdown begins.
+│├ - 55A4 \\ Big Wave Zombie Countdown Update
+│├ - 55EC \\ occurs when red 41
+has a shovel when 55F1 \ [boolean] equals true - │├
+│├ - 55F4 \\ money countdown
+│ ├ —— 55F8 \\ is used for debugging the program (only the English original is valid)
+│├ —— 55FC \\ [boolean] true on exit from level│├
+——5600 \\ [boolean] is true when it is a cleanup process
+- —5604 \\ Countdown to level exit│├
+——560C \\ [boolean] true, this is a passing state
+level│├ —— 5610 \\ Progress bar
+level│├ —— 5744 \\ Flame time countdown
+chile│├ ——5748 \\ [Boolean] true will turn the screen into
+white color —— 5750 \\ will decrease to 0 to create sound
+effects│├ —— 5761 \\ [boolean] press the mustache, then it will be true
+│├ —— 5762 \\ [boolean] Press snag to be true │├
+——5763 \\ [Boolean] Press the future to make it true
+│├ —— 5764 \\ [Boolean] Press the piñata to make it true │├
+——5765 \\ [Logic Meaning] Press dance to be true
+│├ —— 5766 \\ [Boolean] Press daisies to be true
+│├ —— 5767 \ [boolean value] Press sukhbir to confirm │├
+——5798 \\ Quantity
+eaten plants plants —— 579C \\ Number
+shoveled plants 774 \ * wait extra *
+│└┬88 \\
+│ \\ [boolean] ├-18 true card selection not complete
+│ └-1C \\ [extended array of colors] rock button text color with it
+├-7F8 \\ level number
+├- 7F8 \ game state
+├-814 \ [boolean] true - open free-landing mode
+├┬820 \ info
+about animation │└┬8
+│ └┬0 \ animation (A0 + under a)
+│ ├─4 \ \ [Float]
+Animation cycle frequency│ ├─8 \\ [Float]
+Animation speed│ ├─10 \\ Thrash zombies?
+│ ├─14 \\ [boolean] true will disappear
+│ ├─18 \ \ Of the first few
+frames│ └─1C \\ Number of key
+frames├┬82C \\ Archive information│└┬─4
+\\ [ASCII code]
+Username│ ├─14 \\
+Username Length│ ├─18 \\ Maximum Name Length
+user
+├─1C \ number of user changes ─20 \ serial
+user number user │─24 \ current adventure mode level│
+├─28 \ money (/ 10)
+│ ├─2C \ Adventure Mode ended
+│ ├─30 ~ 54 \ Number of completed
+flags on each level in survival mode│ │─58 ~ 68 \\ Highest record on each level in endless mode
+│ ├─6C ~ F0 \ the number of completions on each
+mini-game level│ ├─F4 \\ Height
+Tree of Wisdom ├─F8 ~ 118 \ Time to complete each level of breaking
+cans │ ─11C \\ Endless breaking record
+cans│ ├─120 ~ 140 \\ I am a zombie, the number of completions each
+level ├ ├─144 \\ I This is the highest record for infinite zombies
+│ ├─1C0 ~ 1DC \\ [boolean] 8 purple cards are correct if purchased
+│ ├─1E0 \\ [boolean] true if purchased by imitators
+├─1E8 ~ 1F0 \\ three Date of purchase of marigolds (number of days from 01.01.2000)
+│ ├─1F4 \ [boolean] true if a gold water bottle was purchased
+│ ├─1F8 \\ flower fertilizer (-1000)
+│ ├─1FC \\ Insecticide (-1000)
+│ ├─200 \ [boolean] true if the music box was purchased
+│ ├─204 \\ [boolean] true if the glove was purchased
+│ ├─208 \\ [boolean] If the mushroom garden was purchased, it will be true
+│ ├─20C \\ [Boolean] The cart is bought, it will be true
+│ ├─210 \ [Boolean] The snail is bought, it will be true
+│ ├─214 \\ Card Slot that was purchased Quantity
+├─218 \ [boolean] pool cleaning trolley purchased, correct
+│ ├─21C \\ [boolean] roof cleaning trolley purchased, correct
+│ ├─220 \ remaining number of purchased rakes
+│ ├─224 \ [boolean] true if the aquarium was purchased
+│ ├─228 \\ chocolate (-1000)
+│ ├─22C \\ [boolean] true if the wisdom tree was purchased
+│ ├─230 \ \ Wood manure (-1000)
+│ ├─234 \ [boolean] true if purchased
+walnut wrappers │ 3─350 \\ number of flower pots in a zen garden │ ├
+Below are the attributes of the flower pot (+58 onward)
+│ ├─8 types│
+├─C \ location \
+├─10 \ quantity
+columns│ ├─14 \ number
+lines│ ├─18 \ direction│
+├─28 \
+color│ └─2C \ \
+Status└┬83C \\
+Music└┬─0 \ [pointer] = basic
+address└─8 \ current BGM type
