@@ -701,6 +701,7 @@ Note that there is a judgment that directly turns into ashes and ignores the blo
 [532B96--cmp [esi+000000C8],00000708]
 41D931\\ Potato Thunder Attack
 4607A9\\Wogua attack power
+527005 Gargantuar throw imp
 532493\\[1 byte] Cold mushroom attack power
 4309F0\\ ordinary sunlight value
 430A46\\Coin Value
@@ -722,7 +723,6 @@ Note that there is a judgment that directly turns into ashes and ignores the blo
 40B08F\\1-1 Initial sunlight 150
 40B09B\\ Normal Off Initial Sunlight 50
 Other 0 sunshine levels The initial sunshine is related to mov [ebp+00005560] at [40B0A1], ebx
-527005 Gargantuar throw imp
 
 Modify/Cancel Sun Limit:
   When the sunlight is greater than [430A1F], the sunlight becomes [430A2B], the default is 9990, and the upper limit needs to be changed at the same time
