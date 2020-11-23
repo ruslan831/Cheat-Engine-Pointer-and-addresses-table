@@ -637,3 +637,277 @@ color│ └─2C \ \
 Status└┬83C \\
 Music└┬─0 \ [pointer] = basic
 address└─8 \ current BGM type
+69F1C8\\ Common Pea Attack
+69F1D4\\ Ice Pea Attack
+69F1E0\\Cabbage Attack
+69F1EC\\ ordinary watermelon attack power
+69F1F8\\Spore Attack
+69F204\\ Ice Watermelon Attack
+69F210\\Fire Pea Attack
+69F21C\\Star Attack
+69F228\\Spike Attack
+69F234\\Basketball Attack
+69F240\\Corn kernel attack power
+69F258\\Butter Attack
+69F264\\ Pea Zombie Attack
+69F2C0\\ Plant price (+24Next)
+69F2C4\\ Plant cooling time (+24Next)
+69F2CC\\Plant rate of fire (+24Next)
+6A3260\\The target terrain of the nut level (+4 next grid)
+6A3338\\Target terrain of sunflower level (+4 next grid)
+6A3410\\See the target terrain of the star level (+4 next grid)
+6A35B4\\Adventure mode 1-1 Is there a normal monster (+CC next zombie, +4 next level)
+If you want to modify the list, you must first modify the following two places
+[40D6A3--jmp 40D6A8]
+[40D6AC--nop,nop]
+69DA88\\Zombie Level (+1CNext)
+69DA94\\The proportion of zombies (+1C next)
+422E2F\\[Disassembly Address] From here, the following are the plants of each conveyor belt
+45DC55\\ General plant blood volume
+45E1A7\\nut blood volume
+45E215\\High Nut Blood
+45E445\\Pumpkin blood volume
+45E242\\garlic blood volume
+45E5C3\\Heart of King Earth
+5227BB\\General zombie blood volume
+522892\\Roadblock jewelry HP
+522CBF\\ Strut Zombie HP
+52292B\\Iron barrel jewelry HP
+52337D\\Newspaper jewelry blood volume
+522949\\Iron door accessories HP
+522BB0\\Heart size of rugby accessories
+523530\\Dancing King Zombie Health
+522DE1\\Ice truck zombie blood volume
+523139\\Sled car accessories HP
+522D64\\Dolphin Zombie HP
+522FC7\\Clown Zombie HP
+522BEF\\Miner Zombie Health
+523300\\\Bouncing Zombie HP
+52296E\\Snowman Zombie HP
+522A1B\\Bungee Zombie HP
+52299C\\Ladder Zombie HP
+522E8D\\ Catapult Zombie Health
+523D26\\Giant Zombie HP
+523624\\Dr. Zombie HP
+52361E\\ Dr. Zombie's increased health in mini games
+52382B\\health of nut ornaments
+523A87\\Chili corpse blood volume
+52395D\\High nut jewelry HP
+523E4A\\Red Eye Zombie HP
+5235AC\\The blood volume of the zombie zombie in ize
+5234BF\\Balloon Zombie Balloon Blood
+532FDC\\ Ash Attack//jmp to Delete Ash
+Note that there is a judgment that directly turns into ashes and ignores the blood volume
+[532B96--cmp [esi+000000C8],00000708]
+41D931\\ Potato Thunder Attack
+4607A9\\Wogua attack power
+532493\\[1 byte] Cold mushroom attack power
+4309F0\\ ordinary sunlight value
+430A46\\Coin Value
+4309FD\\[1 byte] Small sunshine value (-5)
+430A0D\\Great sunshine value
+430A53\\[1 byte] value of gold coins (/10-2)
+430A63\\[1 byte] diamond value (/10)
+467B1C's Twin Hair and Trophy Price of the Zombie Aquarium
+467B27\\Big spray price of gems
+467B32\\High Nut Price
+467B3D\\Dive Zombie Price of Gemstone Spin Card and Zombie Aquarium
+467B48\\Crater Card Price
+467B60~467B84\\iz zombie card price (+6Next)
+4325F1\\Time displayed in the money bar after collecting money
+450312\\Money bar display time after pause, modify to 0, no money bar appears after pause, which is good for editing
+415F64\\The countdown of the money bar decreases, and the money bar does not disappear after changing to 0
+40B058\\Who laughed to the last initial sunshine 2000
+40B06F\\I am a zombie initial sunshine 150
+40B08F\\1-1 Initial sunlight 150
+40B09B\\ Normal Off Initial Sunlight 50
+Other 0 sunshine levels The initial sunshine is related to mov [ebp+00005560] at [40B0A1], ebx
+527005 Gargantuar throw imp
+
+Modify/Cancel Sun Limit:
+  When the sunlight is greater than [430A1F], the sunlight becomes [430A2B], the default is 9990, and the upper limit needs to be changed at the same time
+  Cancel the upper limit: change [430A25] to ten nop
+Attached:
+  Item type:
+    1 silver coin
+    2 gold coins
+    3 diamonds
+    4 sunshine
+    5 little sunshine
+    6 sunshine
+    8 trophies
+    9 Shovel
+    10 illustrations
+    11 keys
+    12 Perspective Empty Vase
+    13 green kettle
+    14 tacos
+    15 letters
+    16 plant cards
+    17 gift box
+    18 money bags
+    19 gift boxes
+    20 money bags
+    21 silver sunflowers
+    22 gold sunflowers
+    23 Chocolate
+    24 chocolates
+    25 gift boxes
+    26 gift box
+    27 gift box
+    
+Call Ice EZ
+mov [zombie+AC],Time
+mov [zombie+B4],#50 //or time
+
+*pvzbase=[6A9EC0]
+*mainobject=[[6A9EC0]+768]
+*indirectbase=[[[6A9EC0]+768]+160]
+*plant=[[[6A9EC0]+768]+AC]+14C*(array_index)
+*zombie=[[[6A9EC0]+768]+90]+15C*(array_index)
+*object=[[[6A9EC0]+768]+E4]+D8*(array_index)
+*griditems=[[[6A9EC0]+768]+11C]+EC*(array_index)
+*background=[[[6A9EC0]+768]+554C]
+*wavecount=[[[6A9EC0]+768]+5564]
+*userdata=[[6A9EC0]+82C]
+*adventurecount=[[[6A9EC0]+82C]+2C]
+*adventurelevel=[[[6A9EC0]+82C]+24]
+*bgm=[[6A9EC0]+83C]
+*zombiepreview=[[[6A9EC0]+768]+15C]
+*canzombiepreview=[[[[6A9EC0]+768]+15C]+35]
+*spzombies=[[[6A9EC0]+768]+5574]
+!griditems=[[6A9EC0]+768]+11C
+!plant=[[[6A9EC0]+768]+AC]
+00408F40->{
+setladder(eax=*mainobject,edi=_x,_y)
+return (eax=*griditems,ecx=_layer,edx=_x)
+}
+004092E0->{
+setzombielist(edi=*mainobject)
+return (eax=*wavecount,ebx=0,edx=0)
+}
+0040CB10->{
+createobject(state=0fastfall|1slowfall|2spray1|3spray2|4autocollecting1|5autocollecting2,id,_x,_y,ecx=*mainobject)
+return (eax=*object,[ecx]=pointer to next sen record,edx=objectid)
+}
+0040D120->{
+setplant(_imitativeid,_id,eax=_x,plant_y,*mainobject)
+retrun (eax=*plant,edx=*mainobject)
+}
+0040A160->{
+setbackground(esi=*mainobject,*background=_id)
+return (eax=*pvzbase,[ecx]=pointer to next sen record,edx=?)
+}
+0040DF70->{
+clszombiepreview(ebx=*mainobject)
+return (eax=?,ecx=-1,edx=*mainobject)
+}
+00412C30->{
+callbungeewithzombies(ebx=*mainobject)
+return (eax=0,ecx=_layer?,edx=?)
+}
+00412CE0->{
+callspzombies(edi=*mainobject)
+return (eax=10(nothing)|3(swimming),ecx=?)
+}==*spzombies=1
+00425840->{
+getzombieseed(esi=*indirectbase)
+return (eax=*pvzbase,edx=*adventurecount,ecx=*adventurelevel)
+}
+00426620->{
+setgrave(*indirectbase,edi=_x,ebx=_y)
+return (eax=1,ecx=747D2E09,edx=0)
+}
+0042A0F0->{
+setzombie(ecx=*indirectbase,eax=_x,_y,_id)
+return (eax=_y,ecx=?,edx=_x)
+}
+0043A140->{--0043A152:jo 0043A67E/jnz 0043A67E
+setzombiepreview(*zombiepreview)
+return (eax=?,ecx=0,edx=?)
+}==(*canzombiepreview=0)
+004537B0->{
+islaststand(eax=*pvzbase)
+return (bool al)
+}
+004537D0->{
+isizlevel(eax=*pvzbase)
+return (bool al)
+}
+00453820->{
+isdigitlevel(eax=*pvzbase)
+return (bool al)
+}
+004538C0->{
+islittlezombielevel(ecx=*pvzbase)
+return (bool al)
+}
+00453920->{
+isstormlevel(ecx=*pvzbase)
+return (bool al)
+}
+00453950->{
+isbungeelevel(ecx=*pvzbase)
+return (bool al)
+}
+00453980->{
+is1-10or2-10or3-10(ecx=*pvzbase)
+return (bool al,edx=*userdata)
+}
+004538F0->{
+isvblevel(ecx=*pvzbase)
+return (bool al)
+}
+0045B750->{
+setbgm(edi=bgmid,eax=*bgm)
+return (eax=?,ecx=?,edx=?)
+}
+0045DB60->{
+setplant->initializeattribute(?)
+return (?)
+}
+00522580->{
+setzombie->initializeattribute(?)
+return (?)
+}
+005317C0->{
+hitzombie(esi=*zombie,_value,eax=0 (front)|1 (non-frontal)|2 (splash injury)|4 (frontal deceleration)|5 (non-frontal deceleration)|6 (splash injury deceleration)))
+return (edx=0)
+}
+00532B70->{
+blastzombie(ecx=*zombie)
+}
+0041D8A0->{
+setboom(7F (friendly)) FF (enemy), up, down, radius, _y, _x, _\y, *mainobject)
+return (eax=?,ECX=?)
+}
+004664B0->{--needtargeplant
+burnline(edi=*plant,value)
+return (eax=0,ebx=-1,edx=*mainobject)
+#dangerousfunction
+}
+00466420->{
+froze(edi=!plant)
+return (eax=0,ecx=-1,edx=*mainobject)
+}
+004666A0->{
+plantseffect(*plant)
+return (ecx=*plant,edx=*mainobject)
+}
+005AF400->{
+irandom(eax=value)
+return (eax=result,ecx=?,edx=?)
+}
+0042A890->{--needcorrespondinglevelid
+setizformation(*indirectbase)
+return (eax=-1,ecx=?,edx=*mainobject)
+}
+0041E1C0->{
+setgriditems(esi=!griditems)
+return (eax=*griditems,edx=-1)
+%_layer=_y*2710+49ED0%
+}
+004286F0->{--needcorrespondinglevelid
+setvaseformation(esi=*indirectbase)
+return (eax=vasenumber,ecx=-1,edx=*mainobject)
+}
