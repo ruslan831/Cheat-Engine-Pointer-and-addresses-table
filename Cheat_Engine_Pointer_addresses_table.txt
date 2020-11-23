@@ -701,7 +701,7 @@ Note that there is a judgment that directly turns into ashes and ignores the blo
 [532B96--cmp [esi+000000C8],00000708]
 41D931\\ Potato Thunder Attack
 4607A9\\Wogua attack power
-527005 Gargantuar throw imp
+527005\\Gargantuar throw imp
 532493\\[1 byte] Cold mushroom attack power
 4309F0\\ ordinary sunlight value
 430A46\\Coin Value
