@@ -723,10 +723,134 @@ Note that there is a judgment that directly turns into ashes and ignores the blo
 40B08F\\1-1 Initial sunlight 150
 40B09B\\ Normal Off Initial Sunlight 50
 Other 0 sunshine levels The initial sunshine is related to mov [ebp+00005560] at [40B0A1], ebx
-
 Modify/Cancel Sun Limit:
   When the sunlight is greater than [430A1F], the sunlight becomes [430A2B], the default is 9990, and the upper limit needs to be changed at the same time
   Cancel the upper limit: change [430A25] to ten nop
+0045EB2B-0045EB58 Controls what plant can attack the snorkel zombie in his underwater-state.
+004634D4-004634CF - makes a plant able to be upgraded (requires the 2 addresses changed)
+0040B35B, 0040B36E, 0040B387 - Seeds for 1. izombie.
+00526C92- pushes jackbox's Explode Particle.         
+006A7274- jackbox sound Explode Id.
+00656220- NOT_ENOUGH_SUN string.
+0040F7FC- seems to push the free plant cheat text, although not functional, 0040F7F3 to 1 will make it show the text.
+0041A6FD- Determines what plant glows in a 3x3 area.
+0040F8AD, 112 -00410860, 112 -00413B55, 128 -00488391, 112 -0048882E, 128- 004896D4, 235- 00489820, 128 - If all the Addresses are changed, it will make conveyor belts require sun.
+0052B967-Determines what plant can hypnotize zombies.
+004630D4, 235 -00462D30, 112- If the 2 Addresses are changed this will make the bowling nut strong.
+0045DE8B/0045DE9F-Between those two values are the pieces of codes that contain what scenes allows the mushrooms to be awake.
+0045DE4C/0045DE79-Between those two values are the pieces of codes that contained all the plants that would sleep during the day.
+00483F1A - Change that to a jmp and dave will never pre-select seeds
+0045F1DB-Seems to be related in determining what plant ends up having the kernel pult rng thing although it doesn't work with it only making it so the kernel pult doesn't shoot the butter even if it's lock in to do it.
+0046660D-Determines what effect the blover has on the balloon zombie. (Note: if you have the strong blover enabled, this'll affect all zombies)
+004633A1-Determine what plant has the torchwood effect.
+0052BA3E-Determine what plant has the garlic effect.
+0041E3F4-Determine what plant has the umbrella leaf effect.
+00413BD1-Determine what minigame has the sunny day effect.
+00466601-Changing this to jmp makes blover blow all the zombies away.
+0045FD12-Changing this value will make it so grave buster do nothing to the graves.
+00523E5D-Determine what minigame level gets the zombiquarium effect.
+00424735/004246D5/00426B41/00426B77-Seems to change what level the dark stormy night effect appear on in adventure mode.
+00410ADF/00439035-Seems to determine what extra level has column like you see ‘em effect.
+0052BE5/0046DC21/0046D53F-Seems to determine what level has the high gravity effect.
+004268F1-Seems to determine what level the grave danger effect appears on, although it might be for the minigames and what not only.
+43158F-Changing this makes the game auto collect coins/sun for you.
+0041C6DE-Changing this makes plants ignore the roof slope.
+000426925-Determines what wave grave danger starts appearing in.
+004248AA-zombie nimble zombie quick for every level.
+0046144A-Changing this to jmp 00461456 makes chomper bite zombies instead of eating them.
+004614DC-Chomper’s bite damage.
+00461447/0046144C/00461451-Determine what zombies can't be eaten by chomper. (doesn’t work if you have chomper to bite all zombies)
+00523EE5-this determines what level the big trouble little zombie effect appears on.
+0040F531-40F6F1-Seems to be for the name of the I zombie seedpackets, plus scrolling down some more has the names for the seedpackets in Beghoulded and some other stuff.
+00453E10-Seems related to the player's name part of the lawnstring.
+004539F1-Changes what level the 5-10 crazy dave text appears at although no music will play.
+00453999-what level the 1-10 conveyor belt appears on although changing it might crash the game when changed.
+004539AC-Changes what level 2-10 conveyor belt appears on although might crash the game when changed.
+004539B8-Changes what level the 3-10 conveyor belt appears on although might crash the game when changed.
+00453971-Changes what level the 5-5 conveyor belt and dave's text appear on.
+00453941-Changes what level the crazy dave text and 4-10 conveyor belt appears on.
+004538E1-Changes what level the 3-5 conveyor belt appear on.
+0045390D-Changes what level the hammer part of vasebreaker appears on, 4-5 would still have the vases and make you pick one plant.
+0045377D-changing it to a different level makes it so the level lasts forever with no true end, this was probably directly used for the zomboss fight. 
+004538B1-Seems to be what level has the whack a zombie effect appears, might solflock the level though.
+00453866-Determine what level has wall-nut bowling, similar to the whack a zombie one, a bit unstable.
+0040B03E-Modify what level has the 4-5 sun amount.
+412F26-Modifying this can change what level the bungee blitz from 5-5 appears on.
+0066918E-Messes a bunch with the basic zombies animation. Super speed and/or can be stuck in the eating animation when a plant is eaten etc.
+00405F9D-This calls the text for the roll credits button.
+0066F24A-Calls the animation for the dance cheat.
+0066EE06/0066EE12-Calls the animations relating to imps being thrown from gargs and gargs throwing the imps.
+0066ED86-This along with a few other addresses near it, calls a few of dolphin riders and snorkels animation.
+0066EB32-Calls the animation for when pole vaulters jump.
+0066E9D2-When modifying, seems to make the basic zombies all shown to have a cone on or do other things to the basics animation wise.
+00669182/0066918E-Seems to be what calls the animations for the Pogo Zombies animation.
+This a text file containing pretty much each of the zombie weight as there isn't really a list for the weight in here already (The zombie weights seems to be for the quantity of the zombie in the waves, as the higher it is, the more often it can appear in waves.)
+0040554D-Change this to jmp, and two of the flowers that you can click on the main menu won’t work properly.
+00484086-Makes Dave to only pick one plant, either Cabbage or Peashooter, kind of unstable and might require some modification from 00480407B to get it to somewhat work.
+0048407B-Seems to lets Dave pick shop based plants, night plants in the day, flower pots on non roof stages, aqua based plants on non pool stages. Imitator kind of unstable when he's picked by Dave.
+0045EDEE-Area Of Damage (Fume-shroom/melon splash/spikeweed/spikerock etc.)
+00523F04-The Size Little Zombies have in big trouble little zombie.
+0052A9DC-Changing the value to 0 pretty much will make the ladder be stuck doing the placing down ladder animation.
+0052A9B2-the state of the ladder zombie when he starts to put down the ladder.
+0052BA59-Garlic's effect offset.
+0052B476-Polevaulter's jump state.
+00525D1E-Newspaper's state after the paper is destroyed.
+00528254-Modifying this can make the digger zombie get stuck when he loses his pickaxe, start speeding through the defense, or come out of the ground and walk to the right side of the lawn.
+00528245-Modify this can make the digger zombie not come up when the magnets steal his pickaxe, so it pretty much makes the magnet shrooms useless on him.
+0052831B-Modify this can make the digger not come up without the the use of magnet shrooms.
+0052878F-Changing this can make dancing zombie not spawn zombies.
+00522D5C-Putting this into the armor code, make the zombie stand still with the rare death animation with being having around 500 hp (as in taking 17 peas before dropping)
+0052346B-Messes with the propeller of the Balloon Zombie's hat.
+005287C9-Seems to change what the disco spawns, however it doesn't work properly and can make the levels unbeatable since the zombie spawns don't work properly since the zombie just stands still sometimes and be invisible, however disco spawning disco works just fine.
+00522A2B-Putting this in the armor code make the zombie stand still but is completely invisible with no shadow.
+005229C2-Seems to make the zombie stand still and stay stuck but if it get hits, the zombie then acts normal and goes through the plants, although some zombies skip the first part and sometimes they do eat the plants.
+005228E2-inputting this in the armor, pretty much gives the zombie an invisible bucket...?
+00523182-Putting this into the zombie armor code seems to make the zombie stuck and stay in place and be invisible
+00523E82-Putting this into the armor code, makes the zombie act like the snorkel zombie from the zombiquarium, yes even produces sun, however it's quite unstable in that the game will crash when accessing the almanac and during the choose your plants section.
+00467B00-Function that returns the cost of given packet ID.
+005229E2-Input this into a zombie for armor, and all it does is just stays in place doing a death animation. Only works for normal zombies (conehead, buckethead, flag, basic, ducktube) and even if you do add it in, the zombie doesn't actually show up in the level naturally and as such softlocks the player since they don't appear close enough for a plant to shoot.
+0052645B-Changes the sound for when the dolphin rider jumps.
+00526467-Seems to also mess with the dolphin rider sounds for when it jumps just not as well...?
+00536481-Seems to make the dolphin rider jump do nothing and messes with its position.
+005264A7-Once the dolphin zombie is finished jumping, he seems to speed through and sometimes ignore plants depending on the modified value.
+0052652B-Seems to mess with the particles when he fails to jump over something, a bit weird to modify. Might do something else...? Not sure.
+0045DF32-Seems to mess with the blover's animations when he's blowing.
+005262CE-Messes with the splash of when the dolphin goes into the pool.
+005263C2-Changing the 1 to 0 will make the dolphin rider not jump.
+0052642F-Seem to do the same as 005263C2.
+005240C0-This seems to modify conehead visually I think? I do know that each anim near this address has their own push that when modified, messes with it visually.
+00524C96-Can make the bungee not pick up the plant if you set the value to 6 or below 6.
+0052546D-Can makes Pogo zombie stuck in place (or not sometimes) after losing his pogo, and can eat every plants
+00525468-Might be smart to modify this as it can not make the pogo stuck if you do modify 0052546D and if it gets stuck.
+00525489-Modifying this let's the pogo zombie float through your defense when he's on the pogo.
+00525B9C-When modified, it can change the state of the balloon zombie after getting his balloon popped.
+00525BCD-Messes with balloon zombie position after getting popped when modified.
+00679690-Cactus's visual shoot speed.
+00679748-Some gloom related float address...?
+0045F113-Cattail's visual shoot speed.
+527627 sound of explosion from jalapeno zombie
+526ECF-gargantuar’s state after smashing a plant.
+527005-what zombie type gargantuar will throw.
+5270EB-Zombie State after being thrown by gargantuar.
+527135-what animation Imp uses when thrown.
+00527DA8-Does stuff to squash head in term of where it is visually when it squashes down...?
+00523A23-Messes with the jalapeno zombie visually such as making his head disappear.
+00523A3A/00523A61-Also messes with jalapeno zombie visually such as size...?
+00527988-Changes what the galting pea zombie shoots, kind of useless though since any projectiles that aren’t the zombie peas do nothing to plants.
+005277D9/005277DE/005277E3/005277E8-Modify the distance between each of gatling pea zombie's peas from each other. Putting one of the four values to 0 will make him spam peas with no breaks.
+0052735C-Does weird stuff during the part when the imp goes up into the air when messing with it.
+00527358-Modify this can make the imp not land and goes to the bottom of the screen and pretty much costs you a lawn mower.
+00527370-Does weird stuff to the imp when it lands. Modifying the values can make it stand still, fade out of existent upon landing, or speed though the defense going through your plants.
+0052722D-Seems to modify garg's throw animation speed in some form.
+005271AF-Breaks gargs in strange ways, for example, upon releasing the imp, he can speed through the lawn, stay stuck and only get free upon being able to crush a plant, speed through but died on it own when halfway through the lawn, after releasing the imp turns black, still stay, and become invincible, Etc.
+005270EB-Seems like it determines how long the imp stays in the air, seems kind of broken though as the imp can stay stuck in the air or flat out die on its own before reaching the ground.
+00527078/00527093-Modifying both values seem to change how far gargantuars throw the imp, make sure both values are the same.
+00526F3C-Changing this Gives infinite imps to the garg.
+00525615-Messes with the height of the pogo zombie when he's on the pogo normally
+00525542-Messes with the animation of the pogo zombie when he's on the pogo normally
+0052563C-Messing with this can make the pogo zombie jump over the tall-nut sometimes but only on the roof...? (This one is a bit confusing)
+00525F94-Same deal as 0052563C but for pole vaulters.
+
 Attached:
   Item type:
     1 silver coin
